@@ -10,8 +10,9 @@ public class EnemyManager : Singleton<EnemyManager>
     public List<GameObject> enemies;
     GameObject player;
 
-    public float spawnDelay = 2f;
-    public int maxEnemies = 10;
+    public float spawnDelay = 1f;
+    public int enemyAmount;
+    public int waveCount;
 
     void Start()
     {
@@ -27,20 +28,21 @@ public class EnemyManager : Singleton<EnemyManager>
 
     IEnumerator SpawnWithDelay()
     {
-        //Get a random enemy to spawn
-        int rndEnemy = Random.Range(0, enemyTypes.Length);
-        //Get a random spawn point to spawn at
-        int rndSpawn = Random.Range(0, spawnPoints.Length);
-        //Instantiate a random enemy at a random spawn point
-        GameObject enemy = Instantiate(enemyTypes[rndEnemy], spawnPoints[rndSpawn].position, spawnPoints[rndSpawn].rotation);
-        //Add the enemy to the enemies list
-        enemies.Add(enemy);
-
-        //Wait for the spawn delay
-        yield return new WaitForSeconds(spawnDelay);
-        //Run the coroutine again
-        if (enemies.Count < maxEnemies)
-            StartCoroutine(SpawnWithDelay());
+        
+        for (int i = 0; i <= enemyAmount + waveCount; i++)
+        {
+            //Get a random enemy to spawn
+            int rndEnemy = Random.Range(0, enemyTypes.Length);
+            //Get a random spawn point to spawn at
+            int rndSpawn = Random.Range(0, spawnPoints.Length);
+            //Instantiate a random enemy at a random spawn point
+            GameObject enemy = Instantiate(enemyTypes[rndEnemy], spawnPoints[rndSpawn].position, spawnPoints[rndSpawn].rotation);
+            //Add the enemy to the enemies list
+            enemies.Add(enemy);
+            //Wait for the spawn delay
+            yield return new WaitForSeconds(spawnDelay);
+            //Run the coroutine again
+        }
     }
     //This function spawns a random target type at a random spawn point
     void SpawnEnemy()
@@ -57,13 +59,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
 
     //When a target dies, destroy it, remove it from the list, and update UI for how many enemies there are
-    public void DestroyTarget(GameObject _enemy)
+    public void DestroyEnemy(GameObject _enemy)
     {
         Destroy(_enemy);
         enemies.Remove(_enemy);
     }
 
-    //Set score value
-
+ 
 
 }

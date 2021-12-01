@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        _UI.UpdateHealth(_PH.currentHealth);
+        _UI.UpdateHealth(_P.currentHealth);
     }
 
     public void ChangeGameState(GameState _gameState)

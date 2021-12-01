@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Enemy : GameBehaviour
 {
-    public int health;
-    private int currentHealth;
+    public float maxHealth;
+    private float health = 100;
+    public float currentHealth;
+    public float healthMultiplier;
+
     public int moneyWorth;
 
     private Rigidbody rb;
     public float moveSpeed;
-    
 
     public PlayerController thePlayer;
 
@@ -18,16 +20,14 @@ public class Enemy : GameBehaviour
     {
         rb = GetComponent<Rigidbody>();
         thePlayer = FindObjectOfType<PlayerController>();
-        currentHealth = health;
+        maxHealth = health * (_EM.waveCount * healthMultiplier);
+        currentHealth = maxHealth;
     }
 
     void Update()
     {
         transform.LookAt(thePlayer.transform.position);
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     void FixedUpdate()
@@ -38,10 +38,12 @@ public class Enemy : GameBehaviour
     public void HurtEnemy(int _Damage)
     {
         currentHealth -= _Damage;
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
+            Debug.Log("enemy died");
             _GM.AddScore(moneyWorth);
-            Destroy(this);
+            _EM.DestroyEnemy(this.gameObject);
+            
             
         }
     }

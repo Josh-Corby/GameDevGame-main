@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectController : MonoBehaviour
+public class DetectController : GameBehaviour
 {
     public PlayerController thePlayer;
     void Start()

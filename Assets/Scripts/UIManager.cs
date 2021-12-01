@@ -19,7 +19,7 @@ public class UIManager : Singleton<UIManager>
     public void UpdateHealth(float _health)
     {
         healthText.text = "Health: " + _health.ToString();
-        healthText.color = _health < 10 ? Color.red : Color.white;
-        HealthBar.fillAmount = _PH.currentHealth / _PH.startingHealth;
+        healthText.color = _health < 10 ? Color.red : Color.black;
+        HealthBar.fillAmount = _P.currentHealth / _P.startingHealth;
     }
 }

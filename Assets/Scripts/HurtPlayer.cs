@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HurtPlayer : MonoBehaviour
+public class HurtPlayer : GameBehaviour
 {
     public int damage;
     public void OnTriggerEnter(Collider other)
