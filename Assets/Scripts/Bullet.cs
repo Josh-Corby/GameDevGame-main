@@ -10,12 +10,6 @@ public class Bullet : GameBehaviour
 
     public int damage;
 
-    void Start()
-    {
-        
-    }
-
-
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);

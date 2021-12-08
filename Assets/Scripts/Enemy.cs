@@ -20,7 +20,7 @@ public class Enemy : GameBehaviour
     {
         rb = GetComponent<Rigidbody>();
         thePlayer = FindObjectOfType<PlayerController>();
-        maxHealth = health * (_EM.waveCount * healthMultiplier);
+        maxHealth = health * (_GM.waveCount * healthMultiplier);
         currentHealth = maxHealth;
     }
 

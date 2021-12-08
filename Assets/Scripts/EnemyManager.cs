@@ -11,13 +11,10 @@ public class EnemyManager : Singleton<EnemyManager>
     GameObject player;
 
     public float spawnDelay = 1f;
-    public int enemyAmount;
-    public int waveCount;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(SpawnWithDelay());
     }
     void Update()
     {
@@ -26,10 +23,10 @@ public class EnemyManager : Singleton<EnemyManager>
             SpawnEnemy();
     }
 
-    IEnumerator SpawnWithDelay()
+    public IEnumerator SpawnWithDelay()
     {
         
-        for (int i = 0; i <= enemyAmount + waveCount; i++)
+        for (int i = 0; i < _GM.totalEnemies; i++)
         {
             //Get a random enemy to spawn
             int rndEnemy = Random.Range(0, enemyTypes.Length);
@@ -45,6 +42,8 @@ public class EnemyManager : Singleton<EnemyManager>
         }
     }
     //This function spawns a random target type at a random spawn point
+
+   
     void SpawnEnemy()
     {
         //Get a random target to spawn

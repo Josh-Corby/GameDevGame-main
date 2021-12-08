@@ -16,28 +16,55 @@ public class GameManager : Singleton<GameManager>
     public GameState gameState;
     public int money;
 
+    public float waveTimer = 3f;
+    public int enemyAmount = 9;
+    public int waveCount = 0;
+    public int totalEnemies;
+
     void Start()
     {
         gameState = GameState.Playing;
         money = 0;
         _UI.UpdateMoney(money);
+        _UI.UpdateWaveCount(waveCount);
 
     }
-
     void Update()
-    {
+    { 
+        _UI.UpdateTimer(waveTimer);
         _UI.UpdateHealth(_P.currentHealth);
+
+        if (_EM.enemies.Count == 0)
+        {
+            waveTimer -= Time.deltaTime;
+            if (waveTimer <= 0)
+            {
+                waveTimer = 3;
+                IncrementWaveCount();
+                _UI.UpdateWaveCount(waveCount);
+                StartCoroutine(_EM.SpawnWithDelay());
+                
+            }
+            else if (waveTimer == 0 && _EM.enemies.Count == 0)
+                waveTimer = 3f;
+        }
     }
+
 
     public void ChangeGameState(GameState _gameState)
     {
         gameState = _gameState;
     }
-
     public void AddScore(int _money)
     {
         money += _money;
         _UI.UpdateMoney(money);
     }
 
+
+    public void IncrementWaveCount()
+    {
+        waveCount += 1;
+        totalEnemies = (enemyAmount + waveCount);
+    }
 }
