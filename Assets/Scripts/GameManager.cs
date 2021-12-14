@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         gameState = GameState.Playing;
-        money = 0;
+        money = 1000;
         _UI.UpdateMoney(money);
         _UI.UpdateWaveCount(waveCount);
 
@@ -55,6 +55,7 @@ public class GameManager : Singleton<GameManager>
             {
                 _UM.UpgradeHealth();
                 money -= 70;
+                _UI.UpdateMoney(money);
                 Debug.Log("Upgrade bought!");
             }   
             else
@@ -66,6 +67,7 @@ public class GameManager : Singleton<GameManager>
             {
                 _UM.UpgradeSpeed();
                 money -= 70;
+                _UI.UpdateMoney(money);
                 Debug.Log("Upgrade bought!");
             }
             else
@@ -77,6 +79,7 @@ public class GameManager : Singleton<GameManager>
             {
                 _UM.UpgradeDamage();
                 money -= 70;
+                _UI.UpdateMoney(money);
                 Debug.Log("Upgrade bought!");
             }
             else
@@ -88,6 +91,7 @@ public class GameManager : Singleton<GameManager>
             {
                 _UM.UpgradeBulletSpeed();
                 money -= 70;
+                _UI.UpdateMoney(money);
                 Debug.Log("Upgrade bought!");
             } 
             else
@@ -99,8 +103,21 @@ public class GameManager : Singleton<GameManager>
             {
                 _UM.UpgradeFireRate();
                 money -= 70;
+                _UI.UpdateMoney(money);
                 Debug.Log("Upgrade bought!");
             }     
+            else
+                Debug.Log("Not enough money!");
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            if (money >= 40)
+            {
+                _UM.Heal();
+                money -= 40;
+                _UI.UpdateMoney(money);
+                Debug.Log("Health Restored!");
+            }
             else
                 Debug.Log("Not enough money!");
         }

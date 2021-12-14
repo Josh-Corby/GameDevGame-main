@@ -892,7 +892,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 6994040069333314914, guid: 2ee24dcaee4e31945ad3602209a9ee6b, type: 3}
   enemies: []
-  spawnDelay: 1
+  spawnDelay: 0.5
 --- !u!4 &921106163
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Enemy : GameBehaviour
     public float healthMultiplier;
 
     public int moneyWorth;
+    public int totalWorth;
 
     private Rigidbody rb;
     public float moveSpeed;
@@ -25,6 +26,7 @@ public class Enemy : GameBehaviour
         maxHealth = health * (_GM.waveCount * healthMultiplier);
         currentHealth = maxHealth;
         currentSpeed = moveSpeed + (_GM.waveCount * speedMultiplier);
+        totalWorth = moneyWorth + _GM.waveCount;
     }
 
     void Update()

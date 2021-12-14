@@ -24,13 +24,16 @@ public class UpgradesManager : Singleton<UpgradesManager>
 
     public void UpgradeBulletSpeed()
     {
-        gun.bulletSpeed += 0.1f;
+        gun.bulletSpeed += 0.2f;
     }
 
     public void UpgradeFireRate()
     {
-        gun.timeBetweenShots -= 0.005f;
+        gun.timeBetweenShots -= 0.003f;
     }
 
-
+    public void Heal()
+    {
+        _P.currentHealth = _P.maxHealth;
+    }
 }
