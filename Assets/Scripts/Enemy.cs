@@ -13,6 +13,8 @@ public class Enemy : GameBehaviour
 
     private Rigidbody rb;
     public float moveSpeed;
+    public float currentSpeed;
+    public float speedMultiplier;
 
     public PlayerController thePlayer;
 
@@ -22,6 +24,7 @@ public class Enemy : GameBehaviour
         thePlayer = FindObjectOfType<PlayerController>();
         maxHealth = health * (_GM.waveCount * healthMultiplier);
         currentHealth = maxHealth;
+        currentSpeed = moveSpeed + (_GM.waveCount * speedMultiplier);
     }
 
     void Update()
@@ -32,7 +35,7 @@ public class Enemy : GameBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = (transform.forward * moveSpeed);
+        rb.velocity = (transform.forward * currentSpeed);
     }
 
     public void HurtEnemy(int _Damage)

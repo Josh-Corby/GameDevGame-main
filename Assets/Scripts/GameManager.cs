@@ -48,6 +48,62 @@ public class GameManager : Singleton<GameManager>
             else if (waveTimer == 0 && _EM.enemies.Count == 0)
                 waveTimer = 3f;
         }
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            if (money >= 70)
+            {
+                _UM.UpgradeHealth();
+                money -= 70;
+                Debug.Log("Upgrade bought!");
+            }   
+            else
+                Debug.Log("Not enough money!");
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (money >= 70)
+            {
+                _UM.UpgradeSpeed();
+                money -= 70;
+                Debug.Log("Upgrade bought!");
+            }
+            else
+                Debug.Log("Not enough money!");
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (money >= 70)
+            {
+                _UM.UpgradeDamage();
+                money -= 70;
+                Debug.Log("Upgrade bought!");
+            }
+            else
+                Debug.Log("Not enough money!");
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (money >= 70)
+            {
+                _UM.UpgradeBulletSpeed();
+                money -= 70;
+                Debug.Log("Upgrade bought!");
+            } 
+            else
+                Debug.Log("Not enough money!");
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (money >= 70)
+            {
+                _UM.UpgradeFireRate();
+                money -= 70;
+                Debug.Log("Upgrade bought!");
+            }     
+            else
+                Debug.Log("Not enough money!");
+        }
     }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
-    public int startingHealth;
+    public int maxHealth;
     public float currentHealth;
 
     public float flashLength;
@@ -14,7 +14,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private Color storedColor;
     void Start()
     {
-        currentHealth = startingHealth;
+        currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         storedColor = rend.material.GetColor("_Color");
     }
