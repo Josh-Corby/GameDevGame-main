@@ -29,5 +29,10 @@ public class EnemyBullet : GameBehaviour
             collision.gameObject.GetComponent<PlayerHealth>().HurtPlayer(damage);
             Destroy(this.gameObject);
         }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+        }
     }
 }
