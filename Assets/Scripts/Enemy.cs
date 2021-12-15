@@ -17,6 +17,14 @@ public class Enemy : GameBehaviour
     public float currentSpeed;
     public float speedMultiplier;
 
+    public EnemyBullet enemyBullet;
+    public float bulletSpeed;
+
+    public float timeBetweenShots;
+    private float shotCounter;
+
+    public Transform firePoint;
+
     public PlayerController thePlayer;
 
     void Start()
@@ -32,7 +40,16 @@ public class Enemy : GameBehaviour
     void Update()
     {
         transform.LookAt(thePlayer.transform.position);
+        shotCounter -= Time.deltaTime;
+        if (shotCounter <= 0)
+        {
+            shotCounter = timeBetweenShots;
+            EnemyBullet newBullet = Instantiate(enemyBullet, firePoint.position, firePoint.rotation) as EnemyBullet;
+            newBullet.speed = bulletSpeed;
+            shotCounter = 1;
+        }
 
+        
     }
 
     void FixedUpdate()

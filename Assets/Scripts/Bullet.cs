@@ -29,5 +29,10 @@ public class Bullet : GameBehaviour
             collision.gameObject.GetComponent<Enemy>().HurtEnemy(damage);
             Destroy(this.gameObject);
         }
+
+        if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 }

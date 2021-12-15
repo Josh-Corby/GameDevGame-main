@@ -14,7 +14,7 @@ public class UpgradesManager : Singleton<UpgradesManager>
 
     public void UpgradeSpeed()
     {
-        _PC.moveSpeed += 0.2f;
+        _PC.moveSpeed += 0.5f;
     }
 
     public void UpgradeDamage()
@@ -24,12 +24,12 @@ public class UpgradesManager : Singleton<UpgradesManager>
 
     public void UpgradeBulletSpeed()
     {
-        gun.bulletSpeed += 0.2f;
+        gun.bulletSpeed += 0.5f;
     }
 
     public void UpgradeFireRate()
     {
-        gun.timeBetweenShots -= 0.003f;
+        gun.timeBetweenShots -= 0.02f;
     }
 
     public void Heal()
